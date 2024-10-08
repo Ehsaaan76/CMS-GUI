@@ -2304,7 +2304,6 @@ public class GUI_Prac{
                     }
                     else{
                      
-                    JOptionPane.showMessageDialog(frame,"Student Login Feature Not Available. Log in Anonymously");
 
                     JPanel dashboard_panel = new JPanel();
                     dashboard_panel.setBackground(new Color(173, 216, 230));
@@ -2630,7 +2629,7 @@ public class GUI_Prac{
                     dashboard_panel.add(a7_image);
                     dashboard_panel.add(button7);
                     
-                    
+                    JOptionPane.showMessageDialog(frame,"Student Login Feature Not Available. Loged in Anonymously");
                         
                     }
                 }    
