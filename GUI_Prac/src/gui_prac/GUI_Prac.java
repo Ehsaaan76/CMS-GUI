@@ -297,6 +297,7 @@ public class GUI_Prac{
         frame.setSize(700,500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
+        frame.setLocation(300,200);
         panel.setBackground(new Color(173, 216, 230));
         panel.setLayout(null);
         
@@ -352,8 +353,7 @@ public class GUI_Prac{
                     
         final String admin_username = "123";
         final String admin_password = "123";
-        String teacher_username_for_login;
-        String teacher_password_for_login;
+        
 
         JPanel admin_login_panel = new JPanel();
         admin_login_panel.setBackground(new Color(173, 216, 230));
@@ -530,69 +530,162 @@ public class GUI_Prac{
                     update_teacher_label.setBounds(90, 30, 500, 60);
                     update_teacher_panel.add(update_teacher_label);
                     
+                    
+                                            JLabel t_update_fname_label = new JLabel("First Name:");
+                        t_update_fname_label.setBounds(90, 105, 100, 30);
+                        update_teacher_panel.add(t_update_fname_label);
 
-                    JTextArea teacher_update_data_area = new JTextArea();
-                    teacher_update_data_area.setBounds(50, 100, 600, 300);
-                    teacher_update_data_area.setFont(new Font("Arial", Font.PLAIN, 14));
-                    teacher_update_data_area.setEditable(true);
+                        JTextField t_update_fname_field = new JTextField(teacher_first_name);
+                        t_update_fname_field.setBounds(158, 110, 150, 25);
+                        t_update_fname_field.setFont(new Font("Arial", Font.PLAIN, 14));
+                        t_update_fname_field.setHorizontalAlignment(JLabel.CENTER);
+                        t_update_fname_field.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+                        update_teacher_panel.add(t_update_fname_field);
 
-                    StringBuilder Teacher_Update_Data = new StringBuilder();
+                        JLabel t_update_lname_label = new JLabel("Last Name:");
+                        t_update_lname_label.setBounds(390, 105, 100, 30);
+                        update_teacher_panel.add(t_update_lname_label);
 
-                        Teacher teacher = teachers[0];
-                        Teacher_Update_Data.append("First Name: ").append(teacher.getteacher_first_name()).append("\n");
-                        Teacher_Update_Data.append("Last Name: ").append(teacher.getteacher_last_name()).append("\n");
-                        Teacher_Update_Data.append("Age: ").append(teacher.getteacher_age()).append("\n");
-                        Teacher_Update_Data.append("Gender: ").append(teacher.getteacher_gender()).append("\n");
-                        Teacher_Update_Data.append("Contact: ").append(teacher.getteacher_contact()).append("\n");
-                        Teacher_Update_Data.append("Email: ").append(teacher.getteacher_email()).append("\n");
-                        Teacher_Update_Data.append("Username: ").append(teacher.getteacher_username()).append("\n");
-                        Teacher_Update_Data.append("Password: ").append(teacher.getteacher_password()).append("\n");
-                        Teacher_Update_Data.append("Address: ").append(teacher.getteacher_address()).append("\n");
-                        Teacher_Update_Data.append("=======================================\n");
-                     
+                        JTextField t_update_lname_field = new JTextField(teacher_last_name);
+                        t_update_lname_field.setBounds(458, 110, 150, 25);
+                        t_update_lname_field.setFont(new Font("Arial", Font.PLAIN, 14));
+                        t_update_lname_field.setHorizontalAlignment(JLabel.CENTER);
+                        t_update_lname_field.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+                        update_teacher_panel.add(t_update_lname_field);
 
-                    teacher_update_data_area.setText(Teacher_Update_Data.toString());
-                    update_teacher_panel.add(teacher_update_data_area);
+                        JLabel t_update_age_label = new JLabel("Age:");
+                        t_update_age_label.setBounds(90, 150, 100, 30);
+                        update_teacher_panel.add(t_update_age_label);
+
+                        JTextField t_update_age_field = new JTextField(String.valueOf(teacher_age));
+                        t_update_age_field.setBounds(158, 155, 150, 25);
+                        t_update_age_field.setFont(new Font("Arial", Font.PLAIN, 14));
+                        t_update_age_field.setHorizontalAlignment(JLabel.CENTER);
+                        t_update_age_field.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+                        update_teacher_panel.add(t_update_age_field);
+
+                        JLabel t_update_gender_label = new JLabel("Gender:");
+                        t_update_gender_label.setBounds(390, 150, 100, 30);
+                        update_teacher_panel.add(t_update_gender_label);
+
+                        String[] genderOptions = {"Select", "Male", "Female", "Other"};
+                        JComboBox<String> t_gender_field = new JComboBox<>(genderOptions);
+                        t_gender_field.setBounds(458, 155, 150, 25);
+                        t_gender_field.setFont(new Font("Arial", Font.PLAIN, 14));
+                        update_teacher_panel.add(t_gender_field);
+
+                        JLabel t_update_contact_label = new JLabel("Contact:");
+                        t_update_contact_label.setBounds(90, 190, 200, 40);
+                        update_teacher_panel.add(t_update_contact_label);
+
+                        JTextField t_update_contact_field = new JTextField(String.valueOf(teacher_contact));
+                        t_update_contact_field.setBounds(158, 195, 150, 25);
+                        t_update_contact_field.setFont(new Font("Arial", Font.PLAIN, 14));
+                        t_update_contact_field.setHorizontalAlignment(JLabel.CENTER);
+                        t_update_contact_field.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+                        update_teacher_panel.add(t_update_contact_field);
+
+                        JLabel t_update_email_label = new JLabel("Email:");
+                        t_update_email_label.setBounds(390, 190, 200, 40);
+                        update_teacher_panel.add(t_update_email_label);
+
+                        JTextField t_update_email_field = new JTextField(teacher_email);
+                        t_update_email_field.setBounds(458, 195, 150, 25);
+                        t_update_email_field.setFont(new Font("Arial", Font.PLAIN, 14));
+                        t_update_email_field.setHorizontalAlignment(JLabel.CENTER);
+                        t_update_email_field.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+                        update_teacher_panel.add(t_update_email_field);
+
+                        JLabel t_update_username_label = new JLabel("Username:");
+                        t_update_username_label.setBounds(90, 230, 200, 40);
+                        update_teacher_panel.add(t_update_username_label);
+
+                        JTextField t_update_username_field = new JTextField(teacher_username);
+                        t_update_username_field.setBounds(158, 235, 150, 25);
+                        t_update_username_field.setFont(new Font("Arial", Font.PLAIN, 14));
+                        t_update_username_field.setHorizontalAlignment(JLabel.CENTER);
+                        t_update_username_field.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+                        update_teacher_panel.add(t_update_username_field);
+
+
+                        JLabel t_update_password_label = new JLabel("Password:");
+                        t_update_password_label.setBounds(390, 230, 200, 40);
+                        update_teacher_panel.add(t_update_password_label);
+
+                        JTextField t_update_password_field = new JTextField(teacher_password);
+                        t_update_password_field.setBounds(458, 235, 150, 25);
+                        t_update_password_field.setFont(new Font("Arial", Font.PLAIN, 14));
+                        t_update_password_field.setHorizontalAlignment(JLabel.CENTER);
+                        t_update_password_field.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+                        update_teacher_panel.add(t_update_password_field);
+
+
+                        JLabel t_update_address_label = new JLabel("Address:");
+                        t_update_address_label.setBounds(90, 270, 200, 40);
+                        update_teacher_panel.add(t_update_address_label);
+
+                        JTextField t_update_address_field = new JTextField(teacher_address);
+                        t_update_address_field.setBounds(158, 275, 450, 50);
+                        t_update_address_field.setFont(new Font("Arial", Font.PLAIN, 14));
+                        t_update_address_field.setHorizontalAlignment(JLabel.CENTER);
+                        t_update_address_field.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+                        update_teacher_panel.add(t_update_address_field);
+
+                        JButton save_update_button = new JButton("Save");
+                        save_update_button.setBounds(250, 350, 200, 30);
+                        save_update_button.setBackground(new Color(70, 130, 180));
+                        save_update_button.setFont(new Font("Courier New", Font.BOLD, 16));
+                        save_update_button.setForeground(Color.WHITE);
+                        utility.hover_effect(save_update_button);
+                        update_teacher_panel.add(save_update_button);
+
+
+                        save_update_button.addMouseListener(new MouseAdapter() {
+                            @Override
+                             public void mousePressed(MouseEvent event) {
+                                try {
+                                    total_teachers = 0;
+                                    teacher_first_name = t_update_fname_field.getText();
+                                    teacher_last_name = t_update_lname_field.getText();
+                                    teacher_age = Integer.parseInt(t_update_age_field.getText());
+                                    teacher_gender = (String) t_gender_field.getSelectedItem();
+                                    teacher_contact = Long.parseLong(t_update_contact_field.getText());
+                                    teacher_email = t_update_email_field.getText();
+                                    teacher_username =  t_update_username_field.getText();
+                                    teacher_password = t_update_password_field.getText();
+                                    teacher_address = t_update_address_field.getText();
+                                    
+                                    if (teacher_first_name.isEmpty() || teacher_last_name.isEmpty() || teacher_email.isEmpty() || teacher_username.isEmpty() || teacher_password.isEmpty() || teacher_address.isEmpty() || teacher_gender.equals("Select")){
+                                        throw new Exception("Please enter valid data!");
+                                    }
+
+                                    Teacher new_teacher = new Teacher(teacher_first_name, teacher_last_name, teacher_age, teacher_gender, teacher_contact, teacher_email, teacher_username, teacher_password, teacher_address);
+                                    if (total_teachers < teachers.length) {
+                                        teachers[total_teachers] = new_teacher;
+                                        total_teachers++;
+                                        JOptionPane.showMessageDialog(frame, "Teacher's Data Updated successfully! Login Again...");
+                                        frame.setContentPane(panel);
+                                        frame.revalidate();
+                                    } else {
+                                        JOptionPane.showMessageDialog(frame, "Only One Teacher can be Added...!");
+                                    }
+                                } catch (Exception e) {
+                                    JOptionPane.showMessageDialog(frame, "Please enter valid data!");
+                                }
+                            }
+
+                           
+                        });
+                    
                     frame.setContentPane(update_teacher_panel);
                     frame.revalidate();
+                    
                     
                     JButton back_button_teacher_update_panel = utility.Back_button(new JButton());
                     update_teacher_panel.add(back_button_teacher_update_panel);
                     utility.Back_func(back_button_teacher_update_panel, frame, admin_panel);
-                    
-                    JButton save_teacher_data = new JButton();
-                    save_teacher_data.setText("Save");
-                    save_teacher_data.setBounds(573, 430, 100, 30);
-                    save_teacher_data.setBackground(new Color(70, 130, 180));
-                    save_teacher_data.setFont(new Font("Courier New", Font.BOLD, 14));
-                    utility.hover_effect(save_teacher_data);
-                    save_teacher_data.setToolTipText("Click to Save Teacher's Data");
-                    save_teacher_data.setForeground(Color.WHITE);
-                    update_teacher_panel.add(save_teacher_data);
-                    
-                    save_teacher_data.addMouseListener(new java.awt.event.MouseAdapter(){
-                    @Override
-                    public void mousePressed(java.awt.event.MouseEvent event){
-                        JPanel save_updated_teacher_data_panel = new JPanel();
-                        save_updated_teacher_data_panel.setBackground(new Color(173, 216, 230));
-                        save_updated_teacher_data_panel.setLayout(null);
-                        JLabel save_updated_teacher_data_label = new JLabel();
-                        save_updated_teacher_data_label.setText("Updated Teacher's Data");
-                        save_updated_teacher_data_label.setHorizontalAlignment(JLabel.CENTER);
-                        save_updated_teacher_data_label.setFont(new Font("Serif", Font.BOLD,35));
-                        save_updated_teacher_data_label.setForeground(new Color (70, 130, 180));
-                        save_updated_teacher_data_label.setBounds(90, 30, 500, 60);
-                        save_updated_teacher_data_panel.add(save_updated_teacher_data_label);
-                        frame.setContentPane(save_updated_teacher_data_panel);
-                        frame.revalidate();
-                        
-                        JLabel save_label = new JLabel();
-                        save_label.setText("Save Button Feature Will be available soon");
-                        save_label.setHorizontalAlignment(JLabel.CENTER);
-                        save_label.setFont(new Font("Serif", Font.BOLD,20));
-                        save_label.setForeground(Color.red);
-                        save_label.setBounds(90, 220, 500, 60);
-                        save_updated_teacher_data_panel.add(save_label);
+
+ 
                         
                         JButton print_teacher_data = new JButton();
                         print_teacher_data.setText("Print");
@@ -602,7 +695,7 @@ public class GUI_Prac{
                         utility.hover_effect(print_teacher_data);
                         print_teacher_data.setToolTipText("Click here to Print Student's Data");
                         print_teacher_data.setForeground(Color.WHITE);
-                        save_updated_teacher_data_panel.add(print_teacher_data);
+                        update_teacher_panel.add(print_teacher_data);
 
                         print_teacher_data.addMouseListener(new java.awt.event.MouseAdapter(){
                         @Override
@@ -642,13 +735,9 @@ public class GUI_Prac{
                         
                         });
 
-                        JButton back_button_teacher_save_update_panel = utility.Back_button(new JButton());
-                        save_updated_teacher_data_panel.add(back_button_teacher_save_update_panel);
-                        utility.Back_func(back_button_teacher_save_update_panel, frame, view_teacher_panel);
                         
                         
-                    }
-                    });
+               
                     
                     }
                     });
@@ -696,9 +785,7 @@ public class GUI_Prac{
                     add_teacher_label.setFont(new Font("Serif", Font.BOLD,35));
                     add_teacher_label.setForeground(new Color (70, 130, 180));
                     add_teacher_panel.add(add_teacher_label);
-                    frame.setContentPane(add_teacher_panel);
-                    frame.revalidate();
-                    
+                   
                     
                     JLabel t_fname_label = new JLabel("First Name:");
                     t_fname_label.setBounds(90, 105, 100, 30);
@@ -833,8 +920,9 @@ public class GUI_Prac{
                                     
                                     if (teacher_first_name.isEmpty() || teacher_last_name.isEmpty() || teacher_email.isEmpty() || teacher_username.isEmpty() || teacher_password.isEmpty() || teacher_address.isEmpty() || teacher_gender.equals("Select")){
                                         throw new Exception("Please enter valid data!");
+                                        
                                     }
-
+                                 
                                     Teacher new_teacher = new Teacher(teacher_first_name, teacher_last_name, teacher_age, teacher_gender, teacher_contact, teacher_email, teacher_username, teacher_password, teacher_address);
                                     if (total_teachers < teachers.length) {
                                         teachers[total_teachers] = new_teacher;
@@ -842,7 +930,6 @@ public class GUI_Prac{
                                         JOptionPane.showMessageDialog(frame, "Teacher added successfully! Login Again...");
                                         frame.setContentPane(panel);
                                         frame.revalidate();
-                                        clearFields();
                                     } else {
                                         JOptionPane.showMessageDialog(frame, "Only One Teacher can be Added...!");
                                     }
@@ -851,21 +938,12 @@ public class GUI_Prac{
                                 }
                             }
 
-                            private void clearFields() {
-                                t_fname_field.setText("");
-                                t_lname_field.setText("");
-                                t_age_field.setText("");
-                                t_gender_field.setSelectedIndex(0);
-                                t_contact_field.setText("");
-                                t_email_field.setText("");
-                                t_username_field.setText("");
-                                t_password_field.setText("");
-                                t_address_field.setText("");
-                            }
                         });
                     
                     
-                   
+                    frame.setContentPane(add_teacher_panel);
+                    frame.revalidate();
+                    
                     JButton back_button_teacher_add_panel = utility.Back_button(new JButton());
                     add_teacher_panel.add(back_button_teacher_add_panel);
                     utility.Back_func(back_button_teacher_add_panel, frame, admin_panel);
@@ -1868,74 +1946,162 @@ public class GUI_Prac{
                         update_teacher_panel.add(update_teacher_label);
 
 
-                        JTextArea teacher_update_data_area = new JTextArea();
-                        teacher_update_data_area.setBounds(50, 100, 600, 300);
-                        teacher_update_data_area.setFont(new Font("Arial", Font.PLAIN, 14));
-                        teacher_update_data_area.setEditable(true);
+                        JLabel t_update_fname_label = new JLabel("First Name:");
+                        t_update_fname_label.setBounds(90, 105, 100, 30);
+                        update_teacher_panel.add(t_update_fname_label);
 
-                        StringBuilder Teacher_Update_Data = new StringBuilder();
+                        JTextField t_update_fname_field = new JTextField(teacher_first_name);
+                        t_update_fname_field.setBounds(158, 110, 150, 25);
+                        t_update_fname_field.setFont(new Font("Arial", Font.PLAIN, 14));
+                        t_update_fname_field.setHorizontalAlignment(JLabel.CENTER);
+                        t_update_fname_field.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+                        update_teacher_panel.add(t_update_fname_field);
 
-                            Teacher teacher = teachers[0];
-                            Teacher_Update_Data.append("First Name: ").append(teacher.getteacher_first_name()).append("\n");
-                            Teacher_Update_Data.append("Last Name: ").append(teacher.getteacher_last_name()).append("\n");
-                            Teacher_Update_Data.append("Age: ").append(teacher.getteacher_age()).append("\n");
-                            Teacher_Update_Data.append("Gender: ").append(teacher.getteacher_gender()).append("\n");
-                            Teacher_Update_Data.append("Contact: ").append(teacher.getteacher_contact()).append("\n");
-                            Teacher_Update_Data.append("Email: ").append(teacher.getteacher_email()).append("\n");
-                            Teacher_Update_Data.append("Username: ").append(teacher.getteacher_username()).append("\n");
-                            Teacher_Update_Data.append("Password: ").append(teacher.getteacher_password()).append("\n");
-                            Teacher_Update_Data.append("Address: ").append(teacher.getteacher_address()).append("\n");
-                            Teacher_Update_Data.append("=======================================\n");
+                        JLabel t_update_lname_label = new JLabel("Last Name:");
+                        t_update_lname_label.setBounds(390, 105, 100, 30);
+                        update_teacher_panel.add(t_update_lname_label);
+
+                        JTextField t_update_lname_field = new JTextField(teacher_last_name);
+                        t_update_lname_field.setBounds(458, 110, 150, 25);
+                        t_update_lname_field.setFont(new Font("Arial", Font.PLAIN, 14));
+                        t_update_lname_field.setHorizontalAlignment(JLabel.CENTER);
+                        t_update_lname_field.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+                        update_teacher_panel.add(t_update_lname_field);
+
+                        JLabel t_update_age_label = new JLabel("Age:");
+                        t_update_age_label.setBounds(90, 150, 100, 30);
+                        update_teacher_panel.add(t_update_age_label);
+
+                        JTextField t_update_age_field = new JTextField(String.valueOf(teacher_age));
+                        t_update_age_field.setBounds(158, 155, 150, 25);
+                        t_update_age_field.setFont(new Font("Arial", Font.PLAIN, 14));
+                        t_update_age_field.setHorizontalAlignment(JLabel.CENTER);
+                        t_update_age_field.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+                        update_teacher_panel.add(t_update_age_field);
+
+                        JLabel t_update_gender_label = new JLabel("Gender:");
+                        t_update_gender_label.setBounds(390, 150, 100, 30);
+                        update_teacher_panel.add(t_update_gender_label);
+
+                        String[] genderOptions = {"Select", "Male", "Female", "Other"};
+                        JComboBox<String> t_gender_field = new JComboBox<>(genderOptions);
+                        t_gender_field.setBounds(458, 155, 150, 25);
+                        t_gender_field.setFont(new Font("Arial", Font.PLAIN, 14));
+                        update_teacher_panel.add(t_gender_field);
+
+                        JLabel t_update_contact_label = new JLabel("Contact:");
+                        t_update_contact_label.setBounds(90, 190, 200, 40);
+                        update_teacher_panel.add(t_update_contact_label);
+
+                        JTextField t_update_contact_field = new JTextField(String.valueOf(teacher_contact));
+                        t_update_contact_field.setBounds(158, 195, 150, 25);
+                        t_update_contact_field.setFont(new Font("Arial", Font.PLAIN, 14));
+                        t_update_contact_field.setHorizontalAlignment(JLabel.CENTER);
+                        t_update_contact_field.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+                        update_teacher_panel.add(t_update_contact_field);
+
+                        JLabel t_update_email_label = new JLabel("Email:");
+                        t_update_email_label.setBounds(390, 190, 200, 40);
+                        update_teacher_panel.add(t_update_email_label);
+
+                        JTextField t_update_email_field = new JTextField(teacher_email);
+                        t_update_email_field.setBounds(458, 195, 150, 25);
+                        t_update_email_field.setFont(new Font("Arial", Font.PLAIN, 14));
+                        t_update_email_field.setHorizontalAlignment(JLabel.CENTER);
+                        t_update_email_field.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+                        update_teacher_panel.add(t_update_email_field);
+
+                        JLabel t_update_username_label = new JLabel("Username:");
+                        t_update_username_label.setBounds(90, 230, 200, 40);
+                        update_teacher_panel.add(t_update_username_label);
+
+                        JTextField t_update_username_field = new JTextField(teacher_username);
+                        t_update_username_field.setBounds(158, 235, 150, 25);
+                        t_update_username_field.setFont(new Font("Arial", Font.PLAIN, 14));
+                        t_update_username_field.setHorizontalAlignment(JLabel.CENTER);
+                        t_update_username_field.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+                        update_teacher_panel.add(t_update_username_field);
 
 
-                        teacher_update_data_area.setText(Teacher_Update_Data.toString());
-                        update_teacher_panel.add(teacher_update_data_area);
-                        frame.setContentPane(update_teacher_panel);
-                        frame.revalidate();
+                        JLabel t_update_password_label = new JLabel("Password:");
+                        t_update_password_label.setBounds(390, 230, 200, 40);
+                        update_teacher_panel.add(t_update_password_label);
+
+                        JTextField t_update_password_field = new JTextField(teacher_password);
+                        t_update_password_field.setBounds(458, 235, 150, 25);
+                        t_update_password_field.setFont(new Font("Arial", Font.PLAIN, 14));
+                        t_update_password_field.setHorizontalAlignment(JLabel.CENTER);
+                        t_update_password_field.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+                        update_teacher_panel.add(t_update_password_field);
+
+
+                        JLabel t_update_address_label = new JLabel("Address:");
+                        t_update_address_label.setBounds(90, 270, 200, 40);
+                        update_teacher_panel.add(t_update_address_label);
+
+                        JTextField t_update_address_field = new JTextField(teacher_address);
+                        t_update_address_field.setBounds(158, 275, 450, 50);
+                        t_update_address_field.setFont(new Font("Arial", Font.PLAIN, 14));
+                        t_update_address_field.setHorizontalAlignment(JLabel.CENTER);
+                        t_update_address_field.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+                        update_teacher_panel.add(t_update_address_field);
+
+
+                        JButton save_update_button = new JButton("Save");
+                        save_update_button.setBounds(250, 350, 200, 30);
+                        save_update_button.setBackground(new Color(70, 130, 180));
+                        save_update_button.setFont(new Font("Courier New", Font.BOLD, 16));
+                        save_update_button.setForeground(Color.WHITE);
+                        utility.hover_effect(save_update_button);
+                        update_teacher_panel.add(save_update_button);
+
+
+                        save_update_button.addMouseListener(new MouseAdapter() {
+                            @Override
+                             public void mousePressed(MouseEvent event) {
+                                try {
+                                    total_teachers = 0;
+                                    teacher_first_name = t_update_fname_field.getText();
+                                    teacher_last_name = t_update_lname_field.getText();
+                                    teacher_age = Integer.parseInt(t_update_age_field.getText());
+                                    teacher_gender = (String) t_gender_field.getSelectedItem();
+                                    teacher_contact = Long.parseLong(t_update_contact_field.getText());
+                                    teacher_email = t_update_email_field.getText();
+                                    teacher_username =  t_update_username_field.getText();
+                                    teacher_password = t_update_password_field.getText();
+                                    teacher_address = t_update_address_field.getText();
+                                    
+                                    if (teacher_first_name.isEmpty() || teacher_last_name.isEmpty() || teacher_email.isEmpty() || teacher_username.isEmpty() || teacher_password.isEmpty() || teacher_address.isEmpty() || teacher_gender.equals("Select")){
+                                        throw new Exception("Please enter valid data!");
+                                    }
+
+                                    Teacher new_teacher = new Teacher(teacher_first_name, teacher_last_name, teacher_age, teacher_gender, teacher_contact, teacher_email, teacher_username, teacher_password, teacher_address);
+                                    if (total_teachers < teachers.length) {
+                                        teachers[total_teachers] = new_teacher;
+                                        total_teachers++;
+                                        JOptionPane.showMessageDialog(frame, "Your Data Updated successfully! Login Again...");
+                                        frame.setContentPane(panel);
+                                        frame.revalidate();
+                                    } else {
+                                        JOptionPane.showMessageDialog(frame, "Only One Teacher can be Added...!");
+                                    }
+                                } catch (Exception e) {
+                                    JOptionPane.showMessageDialog(frame, "Please enter valid data!");
+                                }
+                            }
+
+                           
+                        });
+                    
+                    frame.setContentPane(update_teacher_panel);
+                    frame.revalidate();
+                    
+                    
 
                         JButton back_button_teacher_update_panel = utility.Back_button(new JButton());
                         update_teacher_panel.add(back_button_teacher_update_panel);
                         utility.Back_func(back_button_teacher_update_panel, frame, dashboard_panel);
-
-                        JButton save_teacher_data = new JButton();
-                        save_teacher_data.setText("Save");
-                        save_teacher_data.setBounds(573, 430, 100, 30);
-                        save_teacher_data.setBackground(new Color(70, 130, 180));
-                        save_teacher_data.setFont(new Font("Courier New", Font.BOLD, 14));
-                        utility.hover_effect(save_teacher_data);
-                        save_teacher_data.setToolTipText("Click to Save Your Data");
-                        save_teacher_data.setForeground(Color.WHITE);
-                        update_teacher_panel.add(save_teacher_data);
-
-                        save_teacher_data.addMouseListener(new java.awt.event.MouseAdapter(){
-                        @Override
-                        public void mousePressed(java.awt.event.MouseEvent event){
-                            JPanel save_updated_teacher_data_panel = new JPanel();
-                            save_updated_teacher_data_panel.setBackground(new Color(173, 216, 230));
-                            save_updated_teacher_data_panel.setLayout(null);
-                            JLabel save_updated_teacher_data_label = new JLabel();
-                            save_updated_teacher_data_label.setText("Updated Data");
-                            save_updated_teacher_data_label.setHorizontalAlignment(JLabel.CENTER);
-                            save_updated_teacher_data_label.setFont(new Font("Serif", Font.BOLD,35));
-                            save_updated_teacher_data_label.setForeground(new Color (70, 130, 180));
-                            save_updated_teacher_data_label.setBounds(90, 30, 500, 60);
-                            save_updated_teacher_data_panel.add(save_updated_teacher_data_label);
-                            frame.setContentPane(save_updated_teacher_data_panel);
-                            frame.revalidate();
-
-                            JLabel save_label = new JLabel();
-                            save_label.setText("Save Button Feature Will be available soon");
-                            save_label.setHorizontalAlignment(JLabel.CENTER);
-                            save_label.setFont(new Font("Serif", Font.BOLD,20));
-                            save_label.setForeground(Color.red);
-                            save_label.setBounds(90, 220, 500, 60);
-                            save_updated_teacher_data_panel.add(save_label);
-
-                            JButton back_button_teacher_save_update_panel = utility.Back_button(new JButton());
-                            save_updated_teacher_data_panel.add(back_button_teacher_save_update_panel);
-                            utility.Back_func(back_button_teacher_save_update_panel, frame, view_teacher_panel);
-                            
-                            
+                        
                         JButton print_teacher_data = new JButton();
                         print_teacher_data.setText("Print");
                         print_teacher_data.setBounds(573, 430, 100, 30);
@@ -1944,7 +2110,7 @@ public class GUI_Prac{
                         utility.hover_effect(print_teacher_data);
                         print_teacher_data.setToolTipText("Click here to Print Student's Data");
                         print_teacher_data.setForeground(Color.WHITE);
-                        save_updated_teacher_data_panel.add(print_teacher_data);
+                        update_teacher_panel.add(print_teacher_data);
 
                         print_teacher_data.addMouseListener(new java.awt.event.MouseAdapter(){
                         @Override
@@ -1986,8 +2152,6 @@ public class GUI_Prac{
                         });
 
 
-                        }
-                        });
 
                         }
                         });
