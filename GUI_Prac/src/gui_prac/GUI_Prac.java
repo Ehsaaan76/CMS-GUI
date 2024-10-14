@@ -351,8 +351,8 @@ public class GUI_Prac{
         @Override
         public void mousePressed(java.awt.event.MouseEvent event) {
                     
-        final String admin_username = "123";
-        final String admin_password = "123";
+        final String admin_username = "ehsan76";
+        final String admin_password = "ehsan76";
         
 
         JPanel admin_login_panel = new JPanel();
