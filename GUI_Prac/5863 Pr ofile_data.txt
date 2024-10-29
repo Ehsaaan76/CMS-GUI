@@ -1,0 +1,12 @@
+Roll Number: 5863
+Class: 2
+Full Name: 2 2
+Age: 2
+Gender: Male
+Contact: 2
+Email: 2
+Username: 2
+Password: 2
+Address: 2
+=======================================
+

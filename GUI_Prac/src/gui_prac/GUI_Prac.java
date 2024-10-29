@@ -122,6 +122,7 @@ class Student{
     private String student_username;
     private String student_password;
     private String student_address;
+    private boolean Fees;
     
 
    public Student(int student_roll, int student_class, String student_first_name, String student_last_name, int student_age, String student_gender, Long student_contact, String student_email, String student_username, String student_password, String student_address) {
@@ -275,14 +276,18 @@ public class GUI_Prac{
     static String teacher_username;
     static String teacher_password;
     
+    static String subject;
+    static String type;
+    static String description;
+    static int marks;
+    
     
     public static void main(String[] args) {
         
        
         Student[] students = new Student[30];
         Teacher[] teachers = new Teacher[1];
-        String[] announcements;
-
+        Announcement[] announcements = new Announcement[30];
         
 
         
@@ -297,7 +302,7 @@ public class GUI_Prac{
         frame.setSize(700,500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
-        frame.setLocation(300,200);
+        frame.setLocation(300,100);
         panel.setBackground(new Color(173, 216, 230));
         panel.setLayout(null);
         
@@ -531,7 +536,7 @@ public class GUI_Prac{
                     update_teacher_panel.add(update_teacher_label);
                     
                     
-                                            JLabel t_update_fname_label = new JLabel("First Name:");
+                        JLabel t_update_fname_label = new JLabel("First Name:");
                         t_update_fname_label.setBounds(90, 105, 100, 30);
                         update_teacher_panel.add(t_update_fname_label);
 
@@ -2239,6 +2244,14 @@ public class GUI_Prac{
                         fee_stu_panel.add(fee_stu_label);
                         frame.setContentPane(fee_stu_panel);
                         frame.revalidate();
+                        
+                        JLabel ann_label = new JLabel();
+                        ann_label.setText("Fee Records Will be available soon");
+                        ann_label.setHorizontalAlignment(JLabel.CENTER);
+                        ann_label.setFont(new Font("Serif", Font.BOLD,20));
+                        ann_label.setForeground(Color.red);
+                        ann_label.setBounds(90, 220, 500, 60);
+                        fee_stu_panel.add(ann_label);
 
                         JButton back_button_stu_fee = utility.Back_button(new JButton());
                         fee_stu_panel.add(back_button_stu_fee);
@@ -2272,7 +2285,7 @@ public class GUI_Prac{
                         @Override
                         public void mousePressed(java.awt.event.MouseEvent event){
 
-                        JPanel add_ann_panel = new JPanel();
+                            JPanel add_ann_panel = new JPanel();
                             add_ann_panel.setBackground(new Color(173, 216, 230));
                             add_ann_panel.setLayout(null);
                             JLabel add_ann_label = new JLabel();
@@ -2285,94 +2298,107 @@ public class GUI_Prac{
                             frame.setContentPane(add_ann_panel);
                             frame.revalidate();
 
-//                            JLabel subject_label = new JLabel("Subject:");
-//                            subject_label.setBounds(90, 105, 100, 30);
-//                            add_ann_panel.add(subject_label);
-//
-//                            JTextField subject_field = new JTextField();
-//                            subject_field.setBounds(158, 110, 150, 25);
-//                            subject_field.setFont(new Font("Arial", Font.PLAIN, 14));
-//                            subject_field.setHorizontalAlignment(JLabel.CENTER);
-//                            subject_field.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
-//                            add_ann_panel.add(subject_field);
-//
-//                            JLabel type_label = new JLabel("Type:");
-//                            type_label.setBounds(390, 105, 100, 30);
-//                            add_ann_panel.add(type_label);
-//
-//                            JTextField type_field = new JTextField();
-//                            type_field.setBounds(458, 110, 150, 25);
-//                            type_field.setFont(new Font("Arial", Font.PLAIN, 14));
-//                            type_field.setHorizontalAlignment(JLabel.CENTER);
-//                            type_field.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
-//                            add_ann_panel.add(type_field);
-//
-//                            JLabel marks_label = new JLabel("Marks:");
-//                            marks_label.setBounds(90, 105, 100, 30);
-//                            add_ann_panel.add(marks_label);
-//
-//                            JTextField marks_field = new JTextField();
-//                            marks_field.setBounds(158, 110, 150, 25);
-//                            marks_field.setFont(new Font("Arial", Font.PLAIN, 14));
-//                            marks_field.setHorizontalAlignment(JLabel.CENTER);
-//                            marks_field.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
-//                            add_ann_panel.add(marks_field);
-//
-//                            JLabel description_label = new JLabel("Description:");
-//                            description_label.setBounds(90, 270, 200, 40);
-//                            add_ann_panel.add(description_label);
-//
-//                            JTextField description_field = new JTextField();
-//                            description_field.setBounds(158, 275, 450, 50);
-//                            description_field.setFont(new Font("Arial", Font.PLAIN, 14));
-//                            description_field.setHorizontalAlignment(JLabel.CENTER);
-//                            description_field.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
-//                            add_ann_panel.add(description_field);
-//
-//                            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-//                            String current_date = formatter.format(new Date());
-//                            JLabel date_label = new JLabel("Date: " + current_date);
-//                            date_label.setBounds(573, 440, 100, 30);
-//                            add_ann_panel.add(date_label);
-//
-//
-//
-//                            JButton save_ann_button = new JButton("Save");
-//                            save_ann_button.setBounds(250, 350, 200, 30);
-//                            save_ann_button.setBackground(new Color(70, 130, 180));
-//                            save_ann_button.setFont(new Font("Courier New", Font.BOLD, 16));
-//                            save_ann_button.setForeground(Color.WHITE);
-//                            utility.hover_effect(save_ann_button);
-//                            add_ann_panel.add(save_ann_button);
-//                            
-//                            try {
-//                                    subject = subject_field.getText();
-//                                    type = type_field.getText();
-//                                    marks = Integer.parseInt(marks_field.getText());
-//                                    description = description_field.getText();
-//                                    
-//                                    if (subject.isEmpty() || type.isEmpty() || marks.isEmpty() || description.isEmpty()) {
-//                                    throw new Exception("Please enter valid data!");
-//                                      }
-//                                    
-//                                    
-//                                    Announcement new_announcement = new Announcement(subject, type, marks, description);
-//                                    
-//                            }catch(Exception e){
-//                                
-//                            }
+                            JLabel subject_label = new JLabel("Subject:");
+                            subject_label.setBounds(90, 125, 100, 40);
+                            add_ann_panel.add(subject_label);
+
+                            JTextField subject_field = new JTextField();
+                            subject_field.setBounds(158, 130, 230, 35);
+                            subject_field.setFont(new Font("Arial", Font.PLAIN, 14));
+                            subject_field.setHorizontalAlignment(JLabel.CENTER);
+                            subject_field.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+                            add_ann_panel.add(subject_field);
+
+                            JLabel type_label = new JLabel("Type:");
+                            type_label.setBounds(90, 175, 100, 40);
+                            add_ann_panel.add(type_label);
+
+                            JTextField type_field = new JTextField();
+                            type_field.setBounds(158, 180, 450, 35);
+                            type_field.setFont(new Font("Arial", Font.PLAIN, 14));
+                            type_field.setHorizontalAlignment(JLabel.CENTER);
+                            type_field.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+                            add_ann_panel.add(type_field);
+
+                            JLabel marks_label = new JLabel("Marks:");
+                            marks_label.setBounds(405, 125, 100, 40);
+                            add_ann_panel.add(marks_label);
+
+                            JTextField marks_field = new JTextField();
+                            marks_field.setBounds(458, 130, 150, 35);
+                            marks_field.setFont(new Font("Arial", Font.PLAIN, 14));
+                            marks_field.setHorizontalAlignment(JLabel.CENTER);
+                            marks_field.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+                            add_ann_panel.add(marks_field);
+
+                            JLabel description_label = new JLabel("Description:");
+                            description_label.setBounds(90, 225, 200, 50);
+                            add_ann_panel.add(description_label);
+
+                            JTextField description_field = new JTextField();
+                            description_field.setBounds(158, 230, 450, 60);
+                            description_field.setFont(new Font("Arial", Font.PLAIN, 14));
+                            description_field.setHorizontalAlignment(JLabel.CENTER);
+                            description_field.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+                            add_ann_panel.add(description_field);
+
+                            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+                            String current_date = formatter.format(new Date());
+                            JLabel date_label = new JLabel("Date: " + current_date);
+                            date_label.setBounds(573, 440, 100, 30);
+                            add_ann_panel.add(date_label);
+
+
+                            JButton save_ann_button = new JButton("Save");
+                            save_ann_button.setBounds(250, 320, 200, 30);
+                            save_ann_button.setBackground(new Color(70, 130, 180));
+                            save_ann_button.setFont(new Font("Courier New", Font.BOLD, 16));
+                            save_ann_button.setForeground(Color.WHITE);
+                            utility.hover_effect(save_ann_button);
+                            add_ann_panel.add(save_ann_button);
                             
-                            JLabel ann_label = new JLabel();
-                            ann_label.setText("Add Announcements Feature Will be available soon");
-                            ann_label.setHorizontalAlignment(JLabel.CENTER);
-                            ann_label.setFont(new Font("Serif", Font.BOLD,20));
-                            ann_label.setForeground(Color.red);
-                            ann_label.setBounds(90, 220, 500, 60);
-                            add_ann_panel.add(ann_label);
-                
-                            JButton back_button_add_ann = utility.Back_button(new JButton());
-                            add_ann_panel.add(back_button_add_ann);
-                            utility.Back_func(back_button_add_ann, frame, dashboard_panel);
+                            JButton back_button_add_ann_panel = utility.Back_button(new JButton());
+                            add_ann_panel.add(back_button_add_ann_panel);
+                            utility.Back_func(back_button_add_ann_panel, frame, dashboard_panel); 
+                            
+                            
+                            save_ann_button.addMouseListener(new java.awt.event.MouseAdapter(){
+                            @Override
+                            public void mousePressed(java.awt.event.MouseEvent event){
+                                
+                                          
+                            try {
+                                    subject = subject_field.getText();
+                                    type = type_field.getText();
+                                    marks = Integer.parseInt(marks_field.getText());
+                                    description = description_field.getText();
+                                    
+                                    Announcement new_announcement = new Announcement(subject, type, marks, description);
+                                     if (total_announcements < announcements.length) {
+                                        announcements[total_announcements] = new_announcement;
+                                        total_announcements++;
+                                        JOptionPane.showMessageDialog(frame, "Announcement added successfully!");
+                                        clearFields();
+                                    } else {
+                                        JOptionPane.showMessageDialog(frame, "Announcement list is full!");
+                                    }
+                                 
+                                }catch(Exception e){
+                                    JOptionPane.showMessageDialog(frame, "Please enter valid data!");
+
+                                }
+                            }
+                            private void clearFields() {
+                                subject_field.setText("");
+                                type_field.setText("");
+                                marks_field.setText("");
+                                description_field.setText("");
+                            }
+
+                          
+                            });
+                  
+                  
                              }
                             });
 
@@ -2468,7 +2494,77 @@ public class GUI_Prac{
                     }
                     else{
                      
+                    JPanel student_login_panel = new JPanel();
+                    student_login_panel.setBackground(new Color(173, 216, 230));
+                    student_login_panel.setLayout(null);
 
+
+                    JLabel student_login_label = new JLabel("Student Login");
+                    student_login_label.setBounds(90, 30, 500, 60);
+                    student_login_label.setHorizontalAlignment(JLabel.CENTER);
+                    student_login_label.setFont(new Font("Serif", Font.BOLD, 35));
+                    student_login_label.setForeground(new Color(70, 130, 180));
+                    student_login_panel.add(student_login_label);
+
+                    JLabel student_username_label = new JLabel("Username:");
+                    student_username_label.setBounds(170, 180, 100, 30);
+                    student_username_label.setFont(new Font("Serif", Font.ROMAN_BASELINE, 22));
+                    student_login_panel.add(student_username_label);
+
+                    JTextField student_username_field = new JTextField();
+                    student_username_field.setBounds(278, 180, 180, 35);
+                    student_username_field.setFont(new Font("Arial", Font.PLAIN, 20));
+                    student_username_field.setHorizontalAlignment(JLabel.CENTER);
+                    student_username_field.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+                    student_login_panel.add(student_username_field);
+
+                    JLabel student_password_label = new JLabel("Password:");
+                    student_password_label.setBounds(170, 230, 100, 30);
+                    student_password_label.setFont(new Font("Serif", Font.ROMAN_BASELINE, 22));
+                    student_login_panel.add(student_password_label);
+
+                    JPasswordField student_password_field = new JPasswordField();
+                    student_password_field.setBounds(278, 230, 180, 35);
+                    student_password_field.setFont(new Font("Arial", Font.PLAIN, 25));
+                    student_password_field.setHorizontalAlignment(JLabel.CENTER);
+                    student_password_field.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+                    student_login_panel.add(student_password_field);
+
+                    JButton login_button = new JButton("Login");
+                    login_button.setBounds(170, 290, 290, 35);
+                    login_button.setBackground(new Color(70, 130, 180));
+                    login_button.setFont(new Font("Courier New", Font.BOLD, 16));
+                    login_button.setForeground(Color.WHITE);
+                    utility.hover_effect(login_button);
+                    student_login_panel.add(login_button);
+
+                    JButton back_button_student_login_panel = utility.Back_button(new JButton());
+                    student_login_panel.add(back_button_student_login_panel);
+                    utility.Back_func(back_button_student_login_panel, frame, panel);
+
+                    SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+                    String current_date = formatter.format(new Date());
+                    JLabel date_label = new JLabel("Date: " + current_date);
+                    date_label.setBounds(573, 440, 100, 30);
+                    student_login_panel.add(date_label);
+
+
+                    frame.setContentPane(student_login_panel);
+                    frame.setVisible(true);
+                    login_button.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mousePressed(MouseEvent event) {
+                      String student_username = student_username_field.getText();
+                      String student_password = new String(student_password_field.getPassword());
+                      int current_student; 
+                      boolean found = false;
+                    try{
+                        
+                    for(int i=0; i<=total_students; i++){
+                    if (student_username.equals(students[i].getstudent_username()) && student_password.equals(students[i].getstudent_password())) {
+                          
+                    current_student = i;
+                    found = true;
                     JPanel dashboard_panel = new JPanel();
                     dashboard_panel.setBackground(new Color(173, 216, 230));
                     dashboard_panel.setLayout(null);
@@ -2491,7 +2587,6 @@ public class GUI_Prac{
                     utility.Exit_func(button_exit_dashboard_panel);
 
                     
-
                     URL arrow2_img = GUI_Prac.class.getResource("arrow.png");
                     ImageIcon arrow2_icon = new ImageIcon(arrow2_img);
                     Image arrow2_image = arrow2_icon.getImage();
@@ -2567,29 +2662,113 @@ public class GUI_Prac{
                     button3.setBackground(new Color(70, 130, 180));
                     button3.setFont(new Font("Courier New", Font.BOLD, 16));
                     utility.hover_effect(button3);
-                    button3.setToolTipText("Click here to search a Student");
+                    button3.setToolTipText("Click here to View Your Profile");
                     button3.setForeground(Color.WHITE);
 
                     button3.addMouseListener(new java.awt.event.MouseAdapter(){
                     @Override
                     public void mousePressed(java.awt.event.MouseEvent event){
                         
-                    JPanel search_stu_panel = new JPanel();
-                    search_stu_panel.setBackground(new Color(173, 216, 230));
-                    search_stu_panel.setLayout(null);
-                    JLabel search_stu_label = new JLabel();
-                    search_stu_label.setText("Your Profile");
-                    search_stu_label.setHorizontalAlignment(JLabel.CENTER);
-                    search_stu_label.setFont(new Font("Serif", Font.BOLD,35));
-                    search_stu_label.setForeground(new Color (70, 130, 180));
-                    search_stu_label.setBounds(90, 30, 500, 60);
-                    search_stu_panel.add(search_stu_label);
-                    frame.setContentPane(search_stu_panel);
+                    JPanel view_profile_panel = new JPanel();
+                    view_profile_panel.setBackground(new Color(173, 216, 230));
+                    view_profile_panel.setLayout(null);
+                    
+                    JLabel view_profile_label = new JLabel();
+                    view_profile_label.setText("Your Profile");
+                    view_profile_label.setHorizontalAlignment(JLabel.CENTER);
+                    view_profile_label.setFont(new Font("Serif", Font.BOLD,35));
+                    view_profile_label.setForeground(new Color (70, 130, 180));
+                    view_profile_label.setBounds(90, 30, 500, 60);
+                    view_profile_panel.add(view_profile_label);
+                    frame.setContentPane(view_profile_panel);
                     frame.revalidate();
                     
-                    JButton back_button_stu_search = utility.Back_button(new JButton());
-                    search_stu_panel.add(back_button_stu_search);
-                    utility.Back_func(back_button_stu_search, frame, dashboard_panel);  
+
+                    JTextArea student_profile_area = new JTextArea();
+                    student_profile_area.setBounds(50, 100, 600, 300);
+                    student_profile_area.setFont(new Font("Arial", Font.PLAIN, 16));
+                    student_profile_area.setEditable(false);
+
+                    StringBuilder ProfileData = new StringBuilder();
+
+                        Student student = students[current_student];
+                            ProfileData.append("\t\tYour Profile").append("\n");
+                            ProfileData.append("==================================================================\n");
+                            ProfileData.append("Roll No: ").append(student.getstudent_Roll()).append("\n");
+                            ProfileData.append("Class: ").append(student.getstudent_class()).append("\n");
+                            ProfileData.append("First Name: ").append(student.getstudent_First_name()).append("\n");
+                            ProfileData.append("Last Name: ").append(student.getstudent_Last_name()).append("\n");
+                            ProfileData.append("Age: ").append(student.getstudent_Age()).append("\n");
+                            ProfileData.append("Gender: ").append(student.getstudent_Gender()).append("\n");
+                            ProfileData.append("Contact: ").append(student.getstudent_Contact()).append("\n");
+                            ProfileData.append("Email: ").append(student.getstudent_Email()).append("\n");
+                            ProfileData.append("Username: ").append(student.getstudent_username()).append("\n");
+                            ProfileData.append("Password: ").append(student.getstudent_password()).append("\n");
+                            ProfileData.append("Address: ").append(student.getstudent_Address()).append("\n");
+                     
+
+                    student_profile_area.setText(ProfileData.toString());
+                    JScrollPane scrollPane = new JScrollPane(student_profile_area);
+                    scrollPane.setBounds(50, 100, 600, 300);
+                    view_profile_panel.add(scrollPane);
+                    
+                    JButton back_button_stu_profile = utility.Back_button(new JButton());
+                    view_profile_panel.add(back_button_stu_profile);
+                    utility.Back_func(back_button_stu_profile, frame, dashboard_panel); 
+                        
+                        JButton print_profile_data = new JButton();
+                        print_profile_data.setText("Print");
+                        print_profile_data.setBounds(573, 430, 100, 30);
+                        print_profile_data.setBackground(new Color(70, 130, 180));
+                        print_profile_data.setFont(new Font("Courier New", Font.BOLD, 14));
+                        utility.hover_effect(print_profile_data);
+                        print_profile_data.setToolTipText("Click here to Print Student's Data");
+                        print_profile_data.setForeground(Color.WHITE);
+                        view_profile_panel.add(print_profile_data);
+
+                        print_profile_data.addMouseListener(new java.awt.event.MouseAdapter(){
+                        @Override
+                        public void mousePressed(java.awt.event.MouseEvent event){
+
+
+                            File file = new File(student.getstudent_Roll()+" Pr ofile_data.txt");
+
+                            if(file.exists()){
+                               int user_response = JOptionPane.showConfirmDialog(frame,"File already exist. Do you want to overwrite it?", "Confirm Overwrite", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+
+                            if(user_response != JOptionPane.YES_OPTION){
+                                return;
+                            }
+                        }
+                            try (PrintWriter pw = new PrintWriter(new FileWriter(file))) {
+
+                            Student student = students[current_student];
+                            
+                            pw.println("Roll Number: " + student.getstudent_Roll());
+                            pw.println("Class: " + student.getstudent_class());
+                            pw.println("Full Name: " + student.getstudent_First_name()+" " + student.getstudent_Last_name());
+                            pw.println("Age: " + student.getstudent_Age());
+                            pw.println("Gender: " + student.getstudent_Gender()); 
+                            pw.println("Contact: " + student.getstudent_Contact());
+                            pw.println("Email: " + student.getstudent_Email());  
+                            pw.println("Username: " + student.getstudent_username());
+                            pw.println("Password: " + student.getstudent_password());
+                            pw.println("Address: " + student.getstudent_Address());
+                            pw.println("=======================================\n");
+                            
+                                 
+                            JOptionPane.showMessageDialog(frame, "Your Profile data successfully saved to " + student.getstudent_Roll()+" Profile_data.txt!");
+
+                              }catch(Exception e){
+                                 JOptionPane.showMessageDialog(frame, "Error saving Teacher data: " + e.getMessage());
+
+                                      }
+
+                        }
+                        });
+
+
+                    
                     
                     }
                     });
@@ -2687,8 +2866,9 @@ public class GUI_Prac{
                     JPanel fee_stu_panel = new JPanel();
                     fee_stu_panel.setBackground(new Color(173, 216, 230));
                     fee_stu_panel.setLayout(null);
+                    
                     JLabel fee_stu_label = new JLabel();
-                    fee_stu_label.setText("View Fee Records");
+                    fee_stu_label.setText("Fee Records");
                     fee_stu_label.setHorizontalAlignment(JLabel.CENTER);
                     fee_stu_label.setFont(new Font("Serif", Font.BOLD,35));
                     fee_stu_label.setForeground(new Color (70, 130, 180));
@@ -2696,6 +2876,16 @@ public class GUI_Prac{
                     fee_stu_panel.add(fee_stu_label);
                     frame.setContentPane(fee_stu_panel);
                     frame.revalidate();
+                    
+
+                    
+                    JLabel fee_label = new JLabel();
+                    fee_label.setText("Fee Records Will be available soon");
+                    fee_label.setHorizontalAlignment(JLabel.CENTER);
+                    fee_label.setFont(new Font("Serif", Font.BOLD,20));
+                    fee_label.setForeground(Color.red);
+                    fee_label.setBounds(90, 220, 500, 60);
+                    fee_stu_panel.add(fee_label);
                     
                     JButton back_button_stu_fee = utility.Back_button(new JButton());
                     fee_stu_panel.add(back_button_stu_fee);
@@ -2705,7 +2895,6 @@ public class GUI_Prac{
                     
                     }
                     });
-
                     
                     
                     URL arrow6_img = GUI_Prac.class.getResource("arrow.png");
@@ -2727,30 +2916,141 @@ public class GUI_Prac{
                     @Override
                     public void mousePressed(java.awt.event.MouseEvent event){
                         
-                        
-                    if(total_announcements==0){
-                         JOptionPane.showMessageDialog(frame, "No Announcements Yet!");
-                    }
-                    else{
-                        
-                        JPanel view_ann_panel = new JPanel();
-                        view_ann_panel.setBackground(new Color(173, 216, 230));
-                        view_ann_panel.setLayout(null);
-                        JLabel view_ann_label = new JLabel();
-                        view_ann_label.setText("View Fee Records");
-                        view_ann_label.setHorizontalAlignment(JLabel.CENTER);
-                        view_ann_label.setFont(new Font("Serif", Font.BOLD,35));
-                        view_ann_label.setForeground(new Color (70, 130, 180));
-                        view_ann_label.setBounds(90, 30, 500, 60);
-                        view_ann_label.add(view_ann_label);
-                        frame.setContentPane(view_ann_label);
-                        frame.revalidate();
+                    JPanel view_ann_panel = new JPanel();
+                    view_ann_panel.setBackground(new Color(173, 216, 230));
+                    view_ann_panel.setLayout(null);
+                    
+                    JLabel view_ann_label = new JLabel();
+                    view_ann_label.setText("View Announcements");
+                    view_ann_label.setHorizontalAlignment(JLabel.CENTER);
+                    view_ann_label.setFont(new Font("Serif", Font.BOLD,35));
+                    view_ann_label.setForeground(new Color (70, 130, 180));
+                    view_ann_label.setBounds(90, 30, 500, 60);
+                    view_ann_panel.add(view_ann_label);
+                    frame.setContentPane(view_ann_panel);
+                    frame.revalidate();
+                    
+                    JTextArea ann_data_area = new JTextArea();
+                    ann_data_area.setBounds(50, 100, 600, 300);
+                    ann_data_area.setFont(new Font("Arial", Font.PLAIN, 16));
+                    ann_data_area.setEditable(false);
 
-                        JButton back_button_view_ann = utility.Back_button(new JButton());
-                        view_ann_panel.add(back_button_view_ann);
-                        utility.Back_func(back_button_view_ann, frame, dashboard_panel); 
+                    StringBuilder AnnouncementData = new StringBuilder();
+
+                     for (int i = 0; i < total_announcements; i++) {
+                        Announcement announcement = announcements[i];
+                        AnnouncementData.append("Subject Name: ").append(announcement.getsubject()).append("\n");
+                        AnnouncementData.append("Type: ").append(announcement.gettype()).append("\n");
+                        AnnouncementData.append("Marks: ").append(announcement.getmarks()).append("\n");
+                        AnnouncementData.append("Description: ").append(announcement.getdescription()).append("\n");
+                        AnnouncementData.append("=======================================\n");
+                        AnnouncementData.append("\n");
+                    }
+
+                    ann_data_area.setText(AnnouncementData.toString());
+                    JScrollPane scrollPane = new JScrollPane(ann_data_area);
+                    scrollPane.setBounds(50, 100, 600, 300);
+                    view_ann_panel.add(scrollPane);
+                    
+                    JButton back_button_view_ann = utility.Back_button(new JButton());
+                    view_ann_panel.add(back_button_view_ann);
+                    utility.Back_func(back_button_view_ann, frame, dashboard_panel);
+                    
+                    
+                    JButton search_ann_data = new JButton();
+                    search_ann_data.setText("Search");
+                    search_ann_data.setBounds(573, 430, 100, 30);
+                    search_ann_data.setBackground(new Color(70, 130, 180));
+                    search_ann_data.setFont(new Font("Courier New", Font.BOLD, 14));
+                    utility.hover_effect(search_ann_data);
+                    search_ann_data.setToolTipText("Click here to Search Announcements");
+                    search_ann_data.setForeground(Color.WHITE);
+                    view_ann_panel.add(search_ann_data);
+
+                    search_ann_data.addMouseListener(new java.awt.event.MouseAdapter(){
+                    @Override
+                    public void mousePressed(java.awt.event.MouseEvent event){
+                            
+                    JPanel search_ann_panel = new JPanel();
+                    search_ann_panel.setBackground(new Color(173, 216, 230));
+                    search_ann_panel.setLayout(null);
+                    
+                    JLabel search_ann_label = new JLabel();
+                    search_ann_label.setText("Search Announcements");
+                    search_ann_label.setHorizontalAlignment(JLabel.CENTER);
+                    search_ann_label.setFont(new Font("Serif", Font.BOLD,35));
+                    search_ann_label.setForeground(new Color (70, 130, 180));
+                    search_ann_label.setBounds(90, 30, 500, 60);
+                    search_ann_panel.add(search_ann_label);
+                    frame.setContentPane(search_ann_panel);
+                    frame.revalidate();
+                        
+                    JLabel search_label = new JLabel();
+                    search_label.setText("Searching Announcements Will be available soon");
+                    search_label.setHorizontalAlignment(JLabel.CENTER);
+                    search_label.setFont(new Font("Serif", Font.BOLD,20));
+                    search_label.setForeground(Color.red);
+                    search_label.setBounds(90, 220, 500, 60);
+                    search_ann_panel.add(search_label);
+                    
+                    JButton print_ann_data = new JButton();
+                    print_ann_data.setText("Print");
+                    print_ann_data.setBounds(573, 430, 100, 30);
+                    print_ann_data.setBackground(new Color(70, 130, 180));
+                    print_ann_data.setFont(new Font("Courier New", Font.BOLD, 14));
+                    utility.hover_effect(print_ann_data);
+                    print_ann_data.setToolTipText("Click here to Print Announcements");
+                    print_ann_data.setForeground(Color.WHITE);
+                    search_ann_panel.add(print_ann_data);
+                    
+                    print_ann_data.addMouseListener(new java.awt.event.MouseAdapter(){
+                    @Override
+                    public void mousePressed(java.awt.event.MouseEvent event){
+                        
+                    File file = new File("Announcements_data.txt");
+
+                            if(file.exists()){
+                               int user_response = JOptionPane.showConfirmDialog(frame,"File already exist. Do you want to overwrite it?", "Confirm Overwrite", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+
+                            if(user_response != JOptionPane.YES_OPTION){
+                                return;
+                            }
                         }
-   
+                            try (PrintWriter pw = new PrintWriter(new FileWriter(file))) {
+                            for (int i = 0; i < total_announcements; i++) {
+                                Announcement announcement = announcements[i];
+                                if (announcement != null) {
+                                    pw.println("Subject Name: " + announcement.getsubject());
+                                    pw.println("Type: " + announcement.gettype()); 
+                                    pw.println("Marks: " + announcement.getmarks());
+                                    pw.println("Description: " + announcement.getdescription());
+                                    pw.println("=======================================\n");
+                                    pw.println("\n");
+                            }
+ }
+                        
+                                 
+                            JOptionPane.showMessageDialog(frame, "Announcements successfully saved to Announcements_data.txt!");
+
+                              }catch(Exception e){
+                                 JOptionPane.showMessageDialog(frame, "Error saving Announcements data: " + e.getMessage());
+
+                              }
+                        
+                        
+                        
+                    }
+                    });
+                    
+                    
+                    JButton back_button_search_ann_panel = utility.Back_button(new JButton());
+                    search_ann_panel.add(back_button_search_ann_panel);
+                    utility.Back_func(back_button_search_ann_panel, frame, view_ann_panel); 
+                        
+                        
+                    }
+                     });
+                    
                     }
                     });
                     
@@ -2779,7 +3079,6 @@ public class GUI_Prac{
                          }
                         });
 
-                    
                     dashboard_panel.add(a2_image);
                     dashboard_panel.add(button2);
                     dashboard_panel.add(a3_image);
@@ -2793,12 +3092,32 @@ public class GUI_Prac{
                     dashboard_panel.add(a7_image);
                     dashboard_panel.add(button7);
                     
-                    JOptionPane.showMessageDialog(frame,"Student Login Feature Not Available. Loged in Anonymously");
-                        
+                    JOptionPane.showMessageDialog(frame,"Welcome "+students[current_student].getstudent_First_name() +" "+ students[current_student].getstudent_Last_name());
+                    break;
+                    }
+                    
+                    }
+                    if(!found){
+                        JOptionPane.showMessageDialog(frame, "Wrong Username or Password! Try Again...");
+                          student_username_field.setText("");
+                          student_password_field.setText("");
+                          frame.setContentPane(student_login_panel);
+                          frame.revalidate();
+                  
+                       }
+                    
+                    
+                       }
+                    catch(NullPointerException e){
+                          JOptionPane.showMessageDialog(frame, "Wrong Username or Password! Try Again...");
+  
+                            }
+                               
+                }
+                    });
                     }
                 }    
         });
-
           
         }
 
@@ -2807,4 +3126,4 @@ public class GUI_Prac{
      
     }   
 }
-                
+    
